@@ -1,0 +1,14 @@
+version: '3'
+services:
+ postgres:
+  image: postgres:12
+  container_name: postgres
+  ports:
+    - 5432:5432
+  volumes:
+    - ./db_dump.sql:/docker-entrypoint-initdb.d/db_dump.sql
+    - ./postgres_data:/var/lib/postgresql/data
+  environment:
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: password
+    POSTGRES_DB: pg_db
